@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: iam-service
+
+
+server:
+  servlet:
+    context-path: /
+  port: 8189
+
+logging:
+  level:
+    root: info
+    org:
+      springframework:
+        web: debug
+
+

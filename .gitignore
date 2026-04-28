@@ -37,3 +37,4 @@ log/
 env/
 .git
 git/
+src/main/resources/application.yaml
