@@ -2,7 +2,7 @@ spring:
   application:
     name: iam-service
   datasource:
-    url: jdbc:postgrsql://localhost:5432/post_hub_local
+    url: jdbc:postgresql://localhost:5432/post_hub_local
     username: postgres
     password: root
     driver-class-name: org.postgresql.Driver

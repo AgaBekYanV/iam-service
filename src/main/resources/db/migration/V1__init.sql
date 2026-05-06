@@ -6,3 +6,7 @@ CREATE TABLE posts(
     likes INTEGER NOT NULL DEFAULT 0,
     UNIQUE (title)
 );
+
+INSERT INTO posts(title, content,created, likes) VALUES
+                            ('Firs post', 'This is content of the first post', CURRENT_TIMESTAMP,10),
+                            ('Second post', 'This is content of the second post', CURRENT_TIMESTAMP,3);
