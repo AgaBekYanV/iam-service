@@ -20,6 +20,11 @@ spring:
     locations: classpath:db/migration
     schemas: v1_iam_service
 
+end:
+  point:
+    posts: /posts
+    id: /{id}
+
 server:
   servlet:
     context-path: /
