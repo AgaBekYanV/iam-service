@@ -32,7 +32,9 @@ server:
 
 logging:
   level:
-    root: info
+    com:
+      my:
+        iam_service: TRACE
     org:
       springframework:
         web: debug
