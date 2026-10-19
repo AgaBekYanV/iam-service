@@ -1,6 +1,13 @@
 spring:
   application:
     name: iam-service
+  datasource:
+    url: jdbc:postgresql://localhost:5432/${DB_NAME}
+    username: ${USER_DB}
+    password: ${PASS_DB}
+  jpa:
+    hibernate:
+      ddl-auto: create
 
 
 server:

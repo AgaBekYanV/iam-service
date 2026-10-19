@@ -1,4 +1,4 @@
-package com.my.iam_service.model.enteties;
+package com.my.iam_service.model.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;

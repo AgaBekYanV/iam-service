@@ -1,7 +1,7 @@
 package com.my.iam_service.mapper;
 
 import com.my.iam_service.model.dto.post.PostDTO;
-import com.my.iam_service.model.enteties.Post;
+import com.my.iam_service.model.entity.Post;
 import org.hibernate.type.descriptor.DateTimeUtils;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

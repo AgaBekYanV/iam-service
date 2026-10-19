@@ -3,7 +3,7 @@ package com.my.iam_service.service.impl;
 import com.my.iam_service.mapper.PostMapper;
 import com.my.iam_service.model.constants.ApiErrorMessage;
 import com.my.iam_service.model.dto.post.PostDTO;
-import com.my.iam_service.model.enteties.Post;
+import com.my.iam_service.model.entity.Post;
 import com.my.iam_service.model.exception.NotFoundException;
 import com.my.iam_service.model.response.IamResponse;
 import com.my.iam_service.repositories.PostRepository;
