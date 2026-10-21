@@ -2,6 +2,7 @@ package com.my.iam_service.mapper;
 
 import com.my.iam_service.model.dto.post.PostDTO;
 import com.my.iam_service.model.entity.Post;
+import com.my.iam_service.model.request.post.PostRequest;
 import org.hibernate.type.descriptor.DateTimeUtils;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -20,4 +21,8 @@ public interface PostMapper {
     @Mapping(source = "likes", target = "likes")
     @Mapping(source = "created", target = "created", dateFormat = "yyyy-MM-dd'T'HH:mm:ss")
     PostDTO toPostDTO(Post post);
+
+    @Mapping(target = "id", ignore = true)
+    @Mapping(target = "created", ignore = true)
+    Post createPost(PostRequest postRequest);
 }

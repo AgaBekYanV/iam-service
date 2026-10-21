@@ -24,6 +24,7 @@ end:
   point:
     posts: /posts
     id: /{id}
+    create: /create
 
 server:
   servlet:
