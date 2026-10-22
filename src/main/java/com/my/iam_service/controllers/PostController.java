@@ -2,10 +2,12 @@ package com.my.iam_service.controllers;
 
 import com.my.iam_service.model.constants.ApiLogMessage;
 import com.my.iam_service.model.dto.post.PostDTO;
-import com.my.iam_service.model.request.post.PostRequest;
+import com.my.iam_service.model.request.post.NewPostRequest;
+import com.my.iam_service.model.request.post.UpdatePostRequest;
 import com.my.iam_service.model.response.IamResponse;
 import com.my.iam_service.service.PostService;
 import com.my.iam_service.utils.ApiUtils;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -30,9 +32,20 @@ public class PostController {
 
     @PostMapping("${end.point.create}")
     public ResponseEntity<IamResponse<PostDTO>> createPost(
-            @RequestBody PostRequest postRequest){
+            @RequestBody @Valid NewPostRequest newPostRequest){
         log.trace(ApiLogMessage.NAME_OF_CURRENT_METHOD.getValue(), ApiUtils.getMethodeName());
-        IamResponse<PostDTO> response = postService.createPost(postRequest);
+        IamResponse<PostDTO> response = postService.createPost(newPostRequest);
         return ResponseEntity.ok(response);
+    }
+
+    @PutMapping("${end.point.id}")
+    public ResponseEntity<IamResponse<PostDTO>> updatePostById(
+            @PathVariable(name = "id") Integer postId,
+            @RequestBody @Valid UpdatePostRequest request){
+        log.trace(ApiLogMessage.NAME_OF_CURRENT_METHOD.getValue(), ApiUtils.getMethodeName());
+
+        IamResponse<PostDTO> updatedPost = postService.updatePost(postId, request);
+        return ResponseEntity.ok(updatedPost);
+
     }
 }

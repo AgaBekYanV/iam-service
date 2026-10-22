@@ -1,5 +1,7 @@
 package com.my.iam_service.model.request.post;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -12,10 +14,15 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class PostRequest implements Serializable {
+public class NewPostRequest implements Serializable {
 
+    @NotBlank(message = "Title cannot be empty")
     String title;
+
+    @NotBlank(message = "Content cannot be empty")
     String content;
+
+    @NotNull(message = "Specify the number of likes")
     Integer likes;
 
 }

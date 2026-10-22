@@ -1,7 +1,8 @@
 package com.my.iam_service.service;
 
 import com.my.iam_service.model.dto.post.PostDTO;
-import com.my.iam_service.model.request.post.PostRequest;
+import com.my.iam_service.model.request.post.NewPostRequest;
+import com.my.iam_service.model.request.post.UpdatePostRequest;
 import com.my.iam_service.model.response.IamResponse;
 import jakarta.validation.constraints.NotNull;
 
@@ -10,5 +11,7 @@ public interface PostService {
 
     IamResponse<PostDTO> getPostById(@NotNull Integer id);
 
-    IamResponse<PostDTO> createPost(@NotNull PostRequest postRequest);
+    IamResponse<PostDTO> createPost(@NotNull NewPostRequest newPostRequest);
+
+    IamResponse<PostDTO> updatePost(@NotNull Integer postId, @NotNull UpdatePostRequest updatePostRequest);
 }
