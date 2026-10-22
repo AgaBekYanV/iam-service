@@ -13,6 +13,7 @@ import com.my.iam_service.repositories.PostRepository;
 import com.my.iam_service.service.PostService;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.time.LocalDateTime;
 
@@ -30,7 +31,7 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public IamResponse<PostDTO> getPostById(@NotNull Integer postId) {
-        Post post = postRepository.findById(postId)
+        Post post = postRepository.findByIdAndDeletedFalse(postId)
                 .orElseThrow(()-> new NotFoundException(ApiErrorMessage.POST_NOT_FOUND_BY_ID.getMessage(postId)));
         PostDTO postDTO = postMapper.toPostDTO(post);
         return IamResponse.createSuccessful(postDTO);
@@ -50,7 +51,7 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public IamResponse<PostDTO> updatePost(@NotNull Integer postId, @NotNull UpdatePostRequest request) {
-        Post post = postRepository.findById(postId)
+        Post post = postRepository.findByIdAndDeletedFalse(postId)
                 .orElseThrow(()-> new NotFoundException(ApiErrorMessage.POST_NOT_FOUND_BY_ID.getMessage(postId)));
         postMapper.updatePost(post, request);
         post.setUpdate(LocalDateTime.now());
@@ -59,4 +60,14 @@ public class PostServiceImpl implements PostService {
         PostDTO postDto = postMapper.toPostDTO(post);
         return IamResponse.createSuccessful(postDto);
     }
+
+    @Override
+    public void softDeletePost(@NotNull Integer postId) {
+        Post post = postRepository.findByIdAndDeletedFalse(postId)
+                .orElseThrow(()-> new NotFoundException(ApiErrorMessage.POST_NOT_FOUND_BY_ID.getMessage(postId)));
+        post.setDeleted(true);
+        postRepository.save(post);
+    }
+
+
 }

@@ -31,4 +31,7 @@ public class Post {
 
     @Column(name = "likes", nullable = false, columnDefinition = "integer default 0")
     private Integer likes = 0;
+
+    @Column(name = "deleted", nullable = false)
+    private Boolean deleted;
 }
